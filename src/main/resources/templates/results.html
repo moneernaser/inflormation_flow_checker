@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <script type="text/javascript" src="js/table.js"></script>
+    <script  type="text/javascript">
+
+    </script>
+</head>
+
+<body>
+<h1 th:text="${name}"></h1>
+<div th:text="${variablesList}"></div>
+    <div class="row">
+        <!--<div class="col-xs-6 col-md-6 big-box" id="first-child">-->
+        <h2 data-toggle="modal" data-target="#variables_modal">HI Welcome To Full Width</h2>
+        <!-- Modal -->
+        <div class="modal fade" id="variables_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-content-one">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Security Level Assignment</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="">
+                            <div class="panel panel-primary filterable">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Variables</h3>
+                                    <div class="pull-right">
+                                        <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                                        <button id="submitVariables" class="btn btn-default btn-xs btn-submit"><span class="glyphicon glyphicon-play"></span> Submit</button>
+                                    </div>
+                                </div>
+
+                                <table class="table">
+                                    <thead>
+                                    <tr class="filters">
+                                        <th><input type="text" class="form-control" placeholder="Variable Name" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="Type" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="Line" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="level" disabled></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                    <tr th:each="variable, varStat : ${variablesList}">
+                                        <td th:text="${variable.identifier}"></td>
+                                        <td th:text="${variable.varType}"></td>
+                                        <td th:text="${variable.line}"></td>
+                                        <td>
+
+                                            <select class="securityLevel" th:id="'variable_' + ${varStat.index}" th:value="${variable.securityLevel}">
+                                                <option class="TOP_SECRET" th:value="TOP_SECRET">Top Secret</option>
+                                                <option class="SECRET"   th:value="SECRET">Secret</option>
+                                                <option class="CONFIDENTIAL" th:value="CONFIDENTIAL">Confidential</option>
+                                                <option class="UNCLASSIFIED" th:value="UNCLASSIFIED">Unclassified</option>
+                                            </select>
+                                        </td>
+
+                                        <!--<td th:text="${variable.level}">basic</td>-->
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
