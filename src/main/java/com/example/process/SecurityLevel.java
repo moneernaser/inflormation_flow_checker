@@ -28,4 +28,13 @@ public enum SecurityLevel {
         }
         return null;
     }
+
+    public static int fromString(String s) {
+        for (SecurityLevel sl : values()) {
+            if (sl.toString().equalsIgnoreCase(s)) {
+                return sl.securityOrdinal;
+            }
+        }
+        throw new IllegalArgumentException("unidentified security level");
+    }
 }

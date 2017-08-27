@@ -10,11 +10,8 @@
 </head>
 
 <body>
-<h1 th:text="${name}"></h1>
-<div th:text="${variablesList}"></div>
     <div class="row">
-        <!--<div class="col-xs-6 col-md-6 big-box" id="first-child">-->
-        <h2 data-toggle="modal" data-target="#variables_modal">HI Welcome To Full Width</h2>
+        <span data-toggle="modal" data-target="#variables_modal"></span>
         <!-- Modal -->
         <div class="modal fade" id="variables_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -48,7 +45,11 @@
 
 
                                     <tr th:each="variable, varStat : ${variablesList}">
-                                        <td th:text="${variable.identifier}"></td>
+                                        <td th:id="'variable_identifier_' + ${varStat.index}">
+                                            <span th:text="${variable.identifier}"></span>
+                                            <span class="glyphicon glyphicon-arrow-left" style="display: none"></span>
+                                            <span class="glyphicon glyphicon-arrow-right" style="display: none"></span>
+                                        </td>
                                         <td th:text="${variable.varType}"></td>
                                         <td th:text="${variable.line}"></td>
                                         <td>

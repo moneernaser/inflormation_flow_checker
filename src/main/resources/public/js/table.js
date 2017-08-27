@@ -1,4 +1,3 @@
-console.log("hello from table.js");
 $(document).ready(function(){
     var select = document.getElementsByClassName('securityLevel');
     select.onchange = function () {
@@ -46,11 +45,6 @@ $(document).ready(function(){
     });
 
     $('#submitVariables').click(function () {
-
         window.submitVariables();
-
     });
-
-
 });
-
